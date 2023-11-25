@@ -10,7 +10,6 @@ class AuthController extends Controller
     public function login(Request $request)
     {        
         $credentials = $request->json()->all();
-        // dd($credentials);
         if (Auth::attempt($credentials)) {
             $token = auth()->user()->createToken('token-name')->plainTextToken;
 
