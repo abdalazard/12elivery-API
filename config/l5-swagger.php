@@ -296,5 +296,11 @@ return [
         'constants' => [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
         ],
+        'scanOptions' => [
+            'annotations' => [
+                base_path('app'),
+                // Adicione outros diretórios, se necessário
+            ],
+        ],
     ],
 ];

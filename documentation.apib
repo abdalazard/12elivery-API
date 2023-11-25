@@ -1,0 +1,78 @@
+# Ordens de serviço
+
+## Lista coleções de ordens [/orders]
+
+### Lista todas as ordens [GET]
+
++ Response 200 (application/json)
+
+    ```
+    [
+      {
+        "id": 1,
+        "name": "Order 1"
+      },
+      {
+        "id": 2,
+        "name": "Order 2"
+      }
+    ]
+    ```
+
+### Cria nova ordem [POST]
+
++ Request (application/json)
+
+    ```
+    {
+      "name": "New Order"
+    }
+    ```
+
++ Response 201 (application/json)
+
+    ```
+    {
+      "id": 3,
+      "name": "New Order"
+    }
+    ```
+
+## Obtém ordem especifica [/orders/{id}]
+
++ Parameters
+  + id
+
+### Visualiza detalhes da ordem [GET]
+
++ Response 200 (application/json)
+
+    ```
+    {
+      "id": 3,
+      "name": "New Order"
+    }
+    ```
+
+### Atualiza uma ordem existente [PUT]
+
++ Request (application/json)
+
+    ```
+    {
+      "name": "Updated Order"
+    }
+    ```
+
++ Response 200 (application/json)
+
+    ```
+    {
+      "id": 3,
+      "name": "Updated Order"
+    }
+    ```
+
+### Deleta uma ordem [DELETE]
+
++ Response 204
