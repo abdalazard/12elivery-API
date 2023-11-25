@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Register ----> À fazer
+// Route::post('/register', [AuthController::class, 'register']);
 
 //Login
 Route::post('/login', [AuthController::class, 'login']);
@@ -23,11 +25,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/authtest', function() {
         return "teste com autenticação";
     });
-    Route::get('/protected-route', function (Request $request) {
+    Route::get('/me', function (Request $request) {
         return $request->user();
     });
 });
 
-Route::get('/test', function() {
-    return "teste sem autenticação";
-});
+// Route::get('/test', function() {
+//     return "teste sem autenticação";
+// });

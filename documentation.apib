@@ -1,5 +1,28 @@
 # Ordens de serviço
 
+
+## Acessa usuário para criar token para autenticação [/api/login]
+
+### Autenticação [POST]
++ Request (application/json)
+
+    ```
+    {
+      "name": "testerson",
+      "password": "123123"
+    }
+    ```
+
++ Response 200 (application/json)
+
+    ```
+    [
+      {
+        "token": "Use este token",
+      },
+    ]
+    ```
+
 ## Lista coleções de ordens [/orders]
 
 ### Lista todas as ordens [GET]
