@@ -53,6 +53,6 @@ class ServiceOrderTest extends TestCase
         $response = $this->actingAs($authUser)->delete("/api/service-orders/$serviceOrder->id");
 
         //Assert 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 }

@@ -30,6 +30,7 @@ class AuthTest extends TestCase
                 'name' => 'Neymar',
                 'email' => 'neymarzinho10@gmail.com',
             ],
+            'message' => 'Created successfully!'
         ]);    
     }
 

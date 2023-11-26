@@ -37,7 +37,7 @@ class ServiceOrderController extends Controller
     
         $serviceOrder->delete();
     
-        return response()->json($serviceOrder, 201);
+        return response()->json(['service_order' => $serviceOrder->id, 'status' => 200]);
     }
 
     public function index(Request $request)

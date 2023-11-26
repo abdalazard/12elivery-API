@@ -16,6 +16,12 @@
 
 + Response 200 (application/json)
 
+    ```
+    {
+      "message": "Created successfully!"
+    }
+    ```
+
 ## Acessa usuário para criar token para autenticação [/api/login]
 
 ### Autenticação [POST]
@@ -36,6 +42,29 @@
         "token": "Use este token",
       },
     ]
+    ```
+
+## Obtém usuário [/api/me]
+
+### Cadastro [POST]
++ Request (application/json)
+
+    ```
+    {
+      "token" : "Use o token do login"
+    }
+    ```
+
++ Response 200 (application/json)
+
+    ```
+    {
+      "id":2,
+      "name":"testerson",
+      "email":"teste@test.com",
+      "created_at":"2023-11-26T04:42:48.000000Z",
+      "updated_at":"2023-11-26T04:42:48.000000Z"
+    }
     ```
 
 ## Lista coleções de ordens [/orders]
@@ -63,7 +92,12 @@
 
     ```
     {
-      "name": "New Order"
+      "vehiclePlate": "ABC1234",
+      "entryDateTime": "2023-11-26T12:00:00",
+      "exitDateTime": "2023-11-26T15:30:00",
+      "priceType": "Hourly",
+      "price": "100.00",
+      "userId": 2
     }
     ```
 
@@ -71,8 +105,15 @@
 
     ```
     {
-      "id": 3,
-      "name": "New Order"
+      "vehiclePlate": "ABC1234",
+      "entryDateTime": "2023-11-26T12:00:00",
+      "exitDateTime": "2023-11-26T15:30:00",
+      "priceType": "Hourly",
+      "price": "100.00",
+      "userId": 2,
+      "updated_at": "2023-11-26T04:50:53.000000Z",
+      "created_at": "2023-11-26T04:50:53.000000Z",
+      "id": 2
     }
     ```
 
@@ -113,4 +154,10 @@
 
 ### Deleta uma ordem [DELETE]
 
-+ Response 204
++ Response 200 (application/json)
+    ```
+    {
+    "service_order": 5,
+    "status": 200
+    }
+    ´´´
