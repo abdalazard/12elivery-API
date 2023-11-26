@@ -1,5 +1,20 @@
 # Ordens de serviço
 
+## Registra novo usuário [/api/register]
+
+### Cadastro [POST]
++ Request (application/json)
+
+    ```
+    {
+      "name" : "testerson",
+      "email": "teste@teste.com",
+      "password": "12345678",
+      "password_confirmation": "12345678"
+    }
+    ```
+
++ Response 200 (application/json)
 
 ## Acessa usuário para criar token para autenticação [/api/login]
 
@@ -10,7 +25,6 @@
     {
       "email": "teste@teste.com",
       "password": "12345678",
-      "password_confirmation": "12345678"
     }
     ```
 
