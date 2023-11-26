@@ -21,6 +21,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'email' => fake()->email(),
             'password' => static::$password ??= bcrypt('password'),
             'remember_token' => Str::random(10),
         ];

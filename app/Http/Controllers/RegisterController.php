@@ -47,7 +47,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        return response(['user' => $user]);
+        return response(['user' => $user, "message" => "Created successfully!"]);
     }
     
 }

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ServiceOrderController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,19 +17,21 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-//Register ----> À fazer
+//Register
 Route::post('/register', [RegisterController::class, 'create']);
 
 //Login
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/authtest', function() {
-        return "teste com autenticação";
-    });
     Route::get('/me', function (Request $request) {
         return $request->user();
     });
+
+    Route::post('/service-orders', [ServiceOrderController::class, 'create']);
+//     Route::put('/service-orders/{id}', [ServiceOrderController::class, 'update']);
+    Route::delete('/service-orders/{id}', [ServiceOrderController::class, 'delete']);
+    // Route::get('/service-orders', [ServiceOrderController::class, 'index']);
 });
 
 // Route::get('/test', function() {
