@@ -23,6 +23,16 @@ class ServiceOrderController extends Controller
         return response()->json($serviceOrder, 201);
     }
 
+    public function index(Request $request)
+    {
+        $serviceOrders = ServiceOrder::with('user');
+        if ($request->has('vehiclePlate')) {
+            $serviceOrders->where('vehiclePlate', $request->input('vehiclePlate'));
+        }
+    
+        return response()->json($serviceOrders->paginate(5), 200);
+    }
+
     public function update(Request $request, $id)
     {
     }
@@ -38,9 +48,5 @@ class ServiceOrderController extends Controller
         $serviceOrder->delete();
     
         return response()->json(['service_order' => $serviceOrder->id, 'status' => 200]);
-    }
-
-    public function index(Request $request)
-    {
     }
 }
