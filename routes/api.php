@@ -28,12 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::get('/service-orders', [ServiceOrderController::class, 'index']);
     Route::post('/service-orders', [ServiceOrderController::class, 'create']);
-//     Route::put('/service-orders/{id}', [ServiceOrderController::class, 'update']);
+    Route::get('/service-orders', [ServiceOrderController::class, 'index']);
+    Route::put('/service-orders/{id}', [ServiceOrderController::class, 'update']);
     Route::delete('/service-orders/{id}', [ServiceOrderController::class, 'delete']);
 });
-
-// Route::get('/test', function() {
-//     return "teste sem autenticação";
-// });

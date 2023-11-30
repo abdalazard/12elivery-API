@@ -8,14 +8,20 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(Request $request)
-    {        
-        $credentials = $request->json()->all();
-        if (Auth::attempt($credentials)) {
-            $token = auth()->user()->createToken('token-name')->plainTextToken;
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-            return response()->json(['token' => $token], 200);
-        }
+    $credentials = $request->only('email', 'password');
 
-        return response()->json(['message' => 'Unauthorized'], 401);
+    if (Auth::attempt($credentials)) {
+        $token = auth()->user()->createToken('token-name')->plainTextToken;
+
+        return response()->json(['token' => $token], 200);
     }
+
+    return response()->json(['message' => 'Unauthorized'], 401);
+}
 }
