@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/service-orders', [ServiceOrderController::class, 'index']);
     Route::post('/service-orders', [ServiceOrderController::class, 'create']);
-//     Route::put('/service-orders/{id}', [ServiceOrderController::class, 'update']);
+    Route::put('/service-orders/{id}', [ServiceOrderController::class, 'update']);
     Route::delete('/service-orders/{id}', [ServiceOrderController::class, 'delete']);
 });
 

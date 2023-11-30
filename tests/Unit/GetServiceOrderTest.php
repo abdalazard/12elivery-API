@@ -16,7 +16,7 @@ class GetServiceOrderTest extends TestCase
     {
         // Arrange
         $user = User::factory()->create();
-        $serviceOrders = ServiceOrder::factory()->count(15)->create();
+        ServiceOrder::factory()->count(15)->create();
 
         // Act
         $response = $this->actingAs($user)->getJson('/api/service-orders');
@@ -57,4 +57,6 @@ class GetServiceOrderTest extends TestCase
             ->assertJsonMissing(['id' => $serviceOrder1->id])
             ->assertJsonMissing(['id' => $serviceOrder3->id]);
     }
+
+    
 }

@@ -3,7 +3,9 @@
 namespace Tests\Unit;
 
 use App\Models\ServiceOrder;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class DeleteServiceOrderTest extends TestCase
@@ -13,24 +15,34 @@ class DeleteServiceOrderTest extends TestCase
      */
     use RefreshDatabase;
 
-    public function test_delete_service_order() {
-        //Arrange
-        $authUser = $this->user;
+    public function test_delete_service_order(): void
+    {
+        // Arrange
+        $user = User::factory()->create();
+        $serviceOrder = ServiceOrder::factory()->create();
 
-        $serviceOrder = new ServiceOrder([
-            'vehiclePlate' => 'ABC1234',
-            'entryDateTime' => now()->format('Y-m-d H:i:s'),
-            'exitDateTime' => now()->format('Y-m-d H:i:s'),
-            'priceType' => 'Hourly',
-            'price' => '100.00',
-            'userId' => $authUser->id,
-        ]);
-        $serviceOrder->save();
+        // Act
+        $response = $this->actingAs($user)->deleteJson('/api/service-orders/' . $serviceOrder->id);
 
-         //Act
-        $response = $this->actingAs($authUser)->delete("/api/service-orders/$serviceOrder->id");
+        // Assert
+        $response->assertStatus(Response::HTTP_OK)
+            ->assertJson([
+                'message' => 'Service order deleted successfully'
+            ]);
 
-        //Assert 
-        $response->assertStatus(200);
+        $this->assertDatabaseMissing('service_orders', ['id' => $serviceOrder->id]);
+    }
+
+    public function test_delete_non_existing_service_order(): void
+    {
+        // Arrange
+        $user = User::factory()->create();
+
+        // Act
+        $response = $this->actingAs($user)->deleteJson('/api/service-orders/999');
+
+        // Assert
+        $response->assertStatus(Response::HTTP_NOT_FOUND)
+            ->assertJson(['message' => 'Service order not found']);
     }
 }
