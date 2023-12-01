@@ -17,8 +17,6 @@ use App\Http\Controllers\ServiceOrderController;
 |
 */
 
-
-
 //Register
 Route::post('/register', [RegisterController::class, 'create']);
 
