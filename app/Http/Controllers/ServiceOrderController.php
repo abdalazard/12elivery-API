@@ -43,17 +43,15 @@ class ServiceOrderController extends Controller
         try{
             $request->validate([
                 'vehiclePlate' => 'sometimes|required',
-                'entryDateTime' => 'sometimes|required|date',
-                'exitDateTime' => 'sometimes|required|date|after:entryDateTime',
-                'priceType' => 'sometimes|required',
                 'price' => 'sometimes|required|numeric',
-                'userId' => 'sometimes|required|exists:users,id',
             ]);
-            
+
             $serviceOrder = ServiceOrder::findOrFail($id);
-            $serviceOrder->update($request->all());
-            
-            return response()->json(['message' => 'Service order updated successfully'], 200);
+            $serviceOrder->vehiclePlate = $request->get('vehiclePlate', $serviceOrder->vehiclePlate);
+            $serviceOrder->price = $request->get('price', $serviceOrder->price);
+            $serviceOrder->save();
+
+            return response()->json(['message' => 'Service order updated successfully', $serviceOrder], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => "Service order not updated."], 404);
         }            

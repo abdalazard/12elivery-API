@@ -2,7 +2,7 @@
 
 ## Registra novo usuário [/api/register]
 
-### Cadastro [POST]
+### Register [POST]
 + Request (application/json)
 
     ```
@@ -18,13 +18,20 @@
 
     ```
     {
+      "user": {
+          "name": "testerson",
+          "email": "testde@teste.com",
+          "updated_at": "2023-12-01T01:59:10.000000Z",
+          "created_at": "2023-12-01T01:59:10.000000Z",
+          "id": 5
+      },
       "message": "Created successfully!"
     }
     ```
 
 ## Acessa usuário para criar token para autenticação [/api/login]
 
-### Autenticação [POST]
+### Login [POST]
 + Request (application/json)
 
     ```
@@ -37,16 +44,14 @@
 + Response 200 (application/json)
 
     ```
-    [
-      {
-        "token": "Use este token",
-      },
-    ]
+    {
+      "token": "Use este token",
+    }
     ```
 
 ## Obtém usuário [/api/me]
 
-### Cadastro [GET]
+### Current User [GET]
 + Request (application/json)
 
     ```
@@ -67,26 +72,104 @@
     }
     ```
 
-## Lista coleções de ordens [/orders]
+## Lista coleções de ordens [/service-orders]
 
-### Lista todas as ordens [GET]
+### Index [GET]
 
 + Response 200 (application/json)
 
     ```
-    [
       {
-        "id": 1,
-        "name": "Order 1"
-      },
-      {
-        "id": 2,
-        "name": "Order 2"
+        "current_page": 1,
+        "data": [
+          {
+            "id": 6,
+            "vehiclePlate": "ABBC222",
+            "entryDateTime": "2023-11-26 12:00:00",
+            "exitDateTime": "2023-11-26 15:30:00",
+            "priceType": "Hourly",
+            "price": "100.00",
+            "userId": 2,
+            "created_at": "2023-11-30T04:44:38.000000Z",
+            "updated_at": "2023-11-30T04:44:38.000000Z",
+            "user": {
+              "id": 2,
+              "name": "admin",
+              "email": "admin@test.com",
+              "created_at": "2023-11-26T04:42:48.000000Z",
+              "updated_at": "2023-11-26T04:42:48.000000Z"
+            }
+          },
+          {
+            "id": 7,
+            "vehiclePlate": "CBA4321",
+            "entryDateTime": "2023-11-26 12:00:00",
+            "exitDateTime": "2023-11-26 15:30:00",
+            "priceType": "Hourly",
+            "price": "100.00",
+            "userId": 2,
+            "created_at": "2023-11-30T04:44:55.000000Z",
+            "updated_at": "2023-11-30T04:44:55.000000Z",
+            "user": {
+              "id": 2,
+              "name": "admin",
+              "email": "admin@test.com",
+              "created_at": "2023-11-26T04:42:48.000000Z",
+              "updated_at": "2023-11-26T04:42:48.000000Z"
+            }
+          },
+          {
+            "id": 8,
+            "vehiclePlate": "CBB4321",
+            "entryDateTime": "2023-11-26 12:00:00",
+            "exitDateTime": "2023-11-26 15:30:00",
+            "priceType": "Hourly",
+            "price": "100.00",
+            "userId": 2,
+            "created_at": "2023-12-01T02:02:08.000000Z",
+            "updated_at": "2023-12-01T02:02:08.000000Z",
+            "user": {
+              "id": 2,
+              "name": "admin",
+              "email": "admin@test.com",
+              "created_at": "2023-11-26T04:42:48.000000Z",
+              "updated_at": "2023-11-26T04:42:48.000000Z"
+            }
+          }
+        ],
+        "first_page_url": "http://https://abdalazard-api.com/api/service-orders?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://https://abdalazard-api.com/api/service-orders?page=1",
+        "links": [
+          {
+            "url": null,
+            "label": "&laquo; Previous",
+            "active": false
+          },
+          {
+            "url": "http://https://abdalazard-api.com/api/service-orders?page=1",
+            "label": "1",
+            "active": true
+          },
+          {
+            "url": null,
+            "label": "Next &raquo;",
+            "active": false
+          }
+        ],
+        "next_page_url": null,
+        "path": "http://https://abdalazard-api.com/api/service-orders",
+        "per_page": 5,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3
       }
-    ]
     ```
 
-### Cria nova ordem [POST]
+## Cria nova ordem de serviço [/service-order]
+
+### Create [POST]
 
 + Request (application/json)
 
@@ -117,29 +200,16 @@
     }
     ```
 
-## Obtém ordem especifica [/orders/{id}]
+## Atualiza ordem de serviço [/service-order/Id]
 
-+ Parameters
-  + id
-
-### Visualiza detalhes da ordem [GET]
-
-+ Response 200 (application/json)
-
-    ```
-    {
-      "id": 3,
-      "name": "New Order"
-    }
-    ```
-
-### Atualiza uma ordem existente [PUT]
+### Update [PUT]
 
 + Request (application/json)
 
     ```
     {
-      "name": "Updated Order"
+      "vehiclePlate": "XYZ7890",
+      "price": 20.00
     }
     ```
 
@@ -147,17 +217,28 @@
 
     ```
     {
-      "id": 3,
-      "name": "Updated Order"
+      "message": "Service order updated successfully",
+      "0": {
+          "id": 6,
+          "vehiclePlate": "XYZ7890",
+          "entryDateTime": "2023-11-26 12:00:00",
+          "exitDateTime": "2023-11-26 15:30:00",
+          "priceType": "Hourly",
+          "price": 20,
+          "userId": 2,
+          "created_at": "2023-11-30T04:44:38.000000Z",
+          "updated_at": "2023-12-01T02:11:34.000000Z"
+        }
     }
     ```
 
-### Deleta uma ordem [DELETE]
+## Exclui uma ordem de serviço [/service-order/id]
+
+### Delete [DELETE]
 
 + Response 200 (application/json)
     ```
     {
-    "service_order": 5,
-    "status": 200
+      "message": "Service order deleted successfully"
     }
-    ´´´
+    
