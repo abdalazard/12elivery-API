@@ -28,7 +28,7 @@ class APIdoc extends Command
         $this->info('Generating API documentation...');
 
         // Execute o comando aglio
-        exec('aglio -i documentation.apib -o documentation.html');
+        exec('aglio -i documentation.apib -o resources/views/documentation.blade.php');
 
         $this->info('API documentation generated successfully!');
     }
