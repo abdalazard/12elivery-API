@@ -28,7 +28,7 @@ class CreateServiceOrderTest extends TestCase
          ];
  
         //Act
-        $response = $this->actingAs($authUser)->postJson('/api/service-orders', $data);
+        $response = $this->actingAs($authUser)->postJson('/api/service-order', $data);
  
         //Assert 
          $response->assertStatus(201);
@@ -48,7 +48,7 @@ class CreateServiceOrderTest extends TestCase
         ];
 
         // Act
-        $response = $this->actingAs($user)->postJson('/api/service-orders', $serviceOrderData);
+        $response = $this->actingAs($user)->postJson('/api/service-order', $serviceOrderData);
 
         // Assert
         $response->assertStatus(Response::HTTP_CREATED)
@@ -77,7 +77,7 @@ class CreateServiceOrderTest extends TestCase
         ];
 
         // Act
-        $response = $this->actingAs($user)->postJson('/api/service-orders', $serviceOrderData);
+        $response = $this->actingAs($user)->postJson('/api/service-order', $serviceOrderData);
 
         // Assert
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)

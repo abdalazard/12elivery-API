@@ -19,7 +19,7 @@ class UpdateServiceOrderTest extends TestCase
         $serviceOrder = ServiceOrder::factory()->create();
 
         // Act
-        $response = $this->actingAs($user)->putJson("/api/service-orders/{$serviceOrder->id}", []);
+        $response = $this->actingAs($user)->putJson("/api/service-order/{$serviceOrder->id}", []);
 
         // Assert
         $response->assertStatus(Response::HTTP_OK)
@@ -49,7 +49,7 @@ class UpdateServiceOrderTest extends TestCase
         ];
 
         // Act
-        $response = $this->actingAs($user)->putJson("/api/service-orders/{$serviceOrder->id}", $updated);
+        $response = $this->actingAs($user)->putJson("/api/service-order/{$serviceOrder->id}", $updated);
 
         // Assert
         
@@ -79,7 +79,7 @@ class UpdateServiceOrderTest extends TestCase
         $nonExistingServiceOrderId = 999;
 
         // Act
-        $response = $this->actingAs($user)->putJson("/api/service-orders/{$nonExistingServiceOrderId}", []);
+        $response = $this->actingAs($user)->putJson("/api/service-order/{$nonExistingServiceOrderId}", []);
 
         // Assert
         $response->assertStatus(Response::HTTP_NOT_FOUND)
@@ -109,7 +109,7 @@ class UpdateServiceOrderTest extends TestCase
         ];
 
         // Act
-        $response = $this->actingAs($user)->putJson("/api/service-orders/{$serviceOrder->id}", $updated);
+        $response = $this->actingAs($user)->putJson("/api/service-order/{$serviceOrder->id}", $updated);
 
         // Assert
         $response->assertStatus(Response::HTTP_OK)

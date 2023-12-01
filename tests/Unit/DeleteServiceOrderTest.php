@@ -22,7 +22,7 @@ class DeleteServiceOrderTest extends TestCase
         $serviceOrder = ServiceOrder::factory()->create();
 
         // Act
-        $response = $this->actingAs($user)->deleteJson('/api/service-orders/' . $serviceOrder->id);
+        $response = $this->actingAs($user)->deleteJson('/api/service-order/' . $serviceOrder->id);
 
         // Assert
         $response->assertStatus(Response::HTTP_OK)
@@ -39,7 +39,7 @@ class DeleteServiceOrderTest extends TestCase
         $user = User::factory()->create();
 
         // Act
-        $response = $this->actingAs($user)->deleteJson('/api/service-orders/999');
+        $response = $this->actingAs($user)->deleteJson('/api/service-order/999');
 
         // Assert
         $response->assertStatus(Response::HTTP_NOT_FOUND)
