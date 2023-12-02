@@ -1,7 +1,7 @@
 [Documentação](https://abdalazard-api.com/)
 
 
-Como utilizar os endpoints:
+* Como utilizar os endpoints:
     Copie e cole a URL da documentação e acrescente o prefixo "/api" no fim seguido pela rota, ficando ( Exemplo: https://abdalazard-api.com/api/ + rota ). Lembre-se de utilizar o verbo HTTP correto, de acordo com a documentação.
 
 - Necessário criar arquivo .env.
