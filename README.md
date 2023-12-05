@@ -2,11 +2,11 @@
 
 
 * Como utilizar os endpoints:
-    Copie e cole a URL da documentação e acrescente o prefixo "/api" no fim seguido pela rota, ficando ( Exemplo: https://abdalazard-api.com/api/ + rota ). Lembre-se de utilizar o verbo HTTP correto, de acordo com a documentação.
+    Copie e cole a URL da documentação e acrescente o prefixo "/api" no fim seguido pela rota, por exemplo: https://abdalazard-api.com/api/ + rota ). Lembre-se de utilizar o verbo HTTP correto, de acordo com a documentação.
 
 - Necessário criar arquivo .env.
 
-- Caso queira usar os testes unitários, deve-se criar o .env e replicar o banco de dados vazio, tendo somente suas colunas.
+- Caso queira usar os testes unitários, deve-se criar o .env e replicar o banco de dados vazio.
 
 - Execute o comando "php artisan key:generate".
 
